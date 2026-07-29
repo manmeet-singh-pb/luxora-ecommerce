@@ -1,262 +1,344 @@
-# LUXORA - Premium E-Commerce Website
+<div align="center">
 
-A modern, luxury-refined e-commerce platform built with vanilla HTML, CSS, and JavaScript. Perfect for beginners to understand multi-page web development and e-commerce functionality.
+# 🛍️ LUXORA
 
-## 📁 Project Structure
+### Modern Full-Stack E-Commerce Platform
 
-```
-luxora/
-├── index.html          # Home page with hero section and category preview
-├── products.html       # Products listing page with category filtering
-├── cart.html          # Shopping cart with item management
-├── styles.css         # Shared stylesheet for all pages
-├── script.js          # Shared JavaScript (cart, products database)
-├── products.js        # Products page specific functionality
-├── cart.js            # Cart page specific functionality
-└── README.md          # This file
-```
+A responsive e-commerce application built with **HTML, CSS, JavaScript, Flask, and SQLite**, demonstrating frontend-backend integration, REST APIs, database management, and client-side state handling.
 
-## 🎨 Features
+<br>
 
-### Pages
-- **Home Page** (index.html)
-  - Elegant hero section with animated gradient
-  - Category showcase with smooth hover effects
-  - Quick navigation to product categories
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Python](https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://www.python.org/)
+[![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+[![SQLite](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)](https://www.sqlite.org/)
 
-- **Products Page** (products.html)
-  - Browse all products or filter by category
-  - Shoes, Electronics, Clothing, Books, Home Decor
-  - 5 products per category (25 total products)
-  - Add to cart functionality with notifications
-  - Responsive product grid
+<br>
 
-- **Cart Page** (cart.html)
-  - View all items in cart
-  - Adjust quantities with +/- buttons
-  - Remove items
-  - Real-time order summary
-  - Checkout simulation
+<a href="#-project-showcase">Project Showcase</a> •
+<a href="#-key-features">Features</a> •
+<a href="#-tech-stack">Tech Stack</a> •
+<a href="#-system-architecture">Architecture</a> •
+<a href="#-quick-start">Installation</a> •
+<a href="#-api-documentation">API</a>
 
-### Functionality
-- ✅ Add/remove items from cart
-- ✅ Update product quantities
-- ✅ LocalStorage persistence (cart data survives page refresh)
-- ✅ Category filtering
-- ✅ Real-time cart count in header
-- ✅ Toast notifications for user actions
-- ✅ Responsive design (mobile, tablet, desktop)
-
-### Design
-- 🎨 **Luxury Aesthetic**: Dark navy, gold accents, cream background
-- ✨ **Smooth Animations**: Floating effects, fade transitions, hover states
-- 💎 **Professional UI**: Sophisticated typography, spacing, shadows
-- 📱 **Mobile Responsive**: Works seamlessly on all devices
-
-## 🚀 Quick Start
-
-1. **Download all files** to a single folder
-2. **Open `index.html`** in your web browser
-3. **Start shopping!** Navigate between pages using the menu
-
-### File Setup
-Ensure all files are in the same directory:
-- HTML files (index.html, products.html, cart.html)
-- CSS file (styles.css)
-- JavaScript files (script.js, products.js, cart.js)
-
-## 📝 File Descriptions
-
-### HTML Files
-- **index.html**: Home page with hero banner and category cards
-- **products.html**: Product listing with filtering options
-- **cart.html**: Shopping cart interface
-
-### CSS
-- **styles.css**: 
-  - CSS variables for theme colors
-  - Responsive grid layouts
-  - Animations and transitions
-  - Component styling (header, cards, buttons)
-
-### JavaScript Files
-
-#### script.js (Shared)
-- Product database with 5 categories
-- Cart management functions:
-  - `loadCart()` - Load from localStorage
-  - `saveCart()` - Save to localStorage
-  - `addToCart(productId)` - Add item to cart
-  - `removeFromCart(productId)` - Remove item
-  - `updateQuantity(productId, quantity)` - Update quantity
-  - `updateCartCount()` - Update header counter
-- Notification system
-- Page initialization
-
-#### products.js (Products Page)
-- `renderProducts(category)` - Display products
-- `filterProducts(category)` - Filter by category
-- URL parameter handling for category links
-
-#### cart.js (Cart Page)
-- `renderCart()` - Display cart items
-- `updateQuantityAndRender()` - Update and re-render
-- `removeAndRender()` - Remove and re-render
-- `proceedToCheckout()` - Checkout simulation
-
-## 💾 Data Persistence
-
-The cart uses **localStorage** to save data:
-```javascript
-// Automatically saved
-localStorage.setItem('luxora-cart', JSON.stringify(cart));
-
-// Automatically loaded on page load
-const saved = localStorage.getItem('luxora-cart');
-```
-
-Cart persists even after:
-- ❌ Closing the tab/browser
-- ❌ Refreshing the page
-- ✅ Opening a new tab to the same domain
-
-## 🎯 Product Categories
-
-### Shoes (5 products)
-- Leather Oxford
-- Running Sneaker
-- Loafer Casual
-- Winter Boots
-- Heeled Pump
-
-### Electronics (5 products)
-- Smart Watch
-- Wireless Earbuds
-- Tablet Pro
-- Camera HD
-- Laptop Stand
-
-### Clothing (5 products)
-- Silk Blouse
-- Wool Sweater
-- Tailored Blazer
-- Denim Jeans
-- Cashmere Scarf
-
-### Books (5 products)
-- The Midnight Library
-- Atomic Habits
-- Sapiens
-- Project Hail Mary
-- Educated
-
-### Home Decor (5 products)
-- Ceramic Vase
-- Table Lamp
-- Silk Cushion
-- Wall Mirror
-- Plant Pot
-
-## 🎨 Color Scheme
-
-```css
---primary-dark: #1a1a1a        /* Dark Navy */
---primary-gold: #d4af37        /* Luxury Gold */
---secondary-cream: #f5f3f0     /* Cream Background */
---text-dark: #2c2c2c           /* Dark Text */
---text-light: #666666          /* Light Gray */
---white: #ffffff               /* Pure White */
---accent-rose: #b8860b         /* Rose Gold */
-```
-
-## 📱 Responsive Breakpoints
-
-- **Desktop**: Full layout (1400px max-width)
-- **Tablet**: Adjusted grid (768px and below)
-- **Mobile**: Single column where needed
-
-## 🔧 Customization
-
-### Add a New Product
-Edit `script.js` and add to the products object:
-```javascript
-const products = {
-    shoes: [
-        // Add your product here
-        { id: 26, name: 'Product Name', price: 9999, description: 'Description', emoji: '👟' }
-    ]
-};
-```
-
-### Change Colors
-Edit CSS variables in `styles.css`:
-```css
-:root {
-    --primary-gold: #your-color;
-    --primary-dark: #your-color;
-    /* etc */
-}
-```
-
-### Add New Category
-1. Add category to products object in `script.js`
-2. Add category card in `index.html`
-3. Update filter buttons in `products.html`
-
-## ✨ Learning Outcomes
-
-This project teaches:
-- ✅ Multi-page website structure
-- ✅ HTML semantic markup
-- ✅ CSS Grid and Flexbox layouts
-- ✅ CSS animations and transitions
-- ✅ Vanilla JavaScript DOM manipulation
-- ✅ LocalStorage for data persistence
-- ✅ URL parameters handling
-- ✅ Event handling and listeners
-- ✅ State management
-- ✅ Responsive design
-
-## 🐛 Troubleshooting
-
-### Cart not persisting
-- Ensure browser allows localStorage
-- Clear browser cache and reload
-- Check browser console for errors
-
-### Images not showing
-- This project uses emoji instead of image files
-- To use actual images, replace emoji with `<img>` tags
-
-### Styling issues
-- Verify all files are in the same directory
-- Clear browser cache (Ctrl+Shift+Del)
-- Check that styles.css is linked correctly
-
-## 📚 Next Steps
-
-To enhance this project:
-1. **Add User Authentication** - Login/Registration system
-2. **Add Payment Integration** - Stripe or Razorpay
-3. **Backend Integration** - Node.js/Express API
-4. **Database** - MongoDB or SQL database
-5. **Search Functionality** - Search and filters
-6. **Reviews & Ratings** - Customer feedback
-7. **Admin Panel** - Product management
-8. **Order History** - Track orders
-
-## 📄 License
-
-Free to use for learning and personal projects.
-
-## 👨‍💻 Developer Notes
-
-- All JavaScript is vanilla (no frameworks)
-- No external dependencies required
-- Works offline (except checkout)
-- Fully responsive design
-- Accessibility friendly
+</div>
 
 ---
 
-**Happy Shopping with LUXORA!** 🛍️✨
+# 📖 About the Project
+
+**Luxora** is a multi-page e-commerce web application developed to demonstrate modern full-stack web development concepts.
+
+The project combines a responsive frontend built with **HTML, CSS, and JavaScript** with a **Python Flask backend** and an **SQLite database**. Products are served through a REST API, dynamically rendered on the client using JavaScript, while shopping cart data is managed through LocalStorage for a smooth user experience.
+
+This project focuses on clean architecture, modular JavaScript, responsive UI design, REST API communication, and database integration.
+
+---
+
+# 📸 Project Showcase
+
+<div align="center">
+
+| Home Page | Products Page | Shopping Cart |
+|-----------|---------------|---------------|
+| <img src="screenshots/home.png" width="280"/> | <img src="screenshots/products.png" width="280"/> | <img src="screenshots/cart.png" width="280"/> |
+
+</div>
+
+---
+
+# ✨ Key Features
+
+## 🎨 Frontend
+
+- Responsive multi-page website
+- Modern luxury-inspired UI
+- Sticky navigation bar with scroll effects
+- Dynamic product rendering using JavaScript
+- Category filtering
+- Shopping cart with LocalStorage persistence
+- Toast notifications
+- Smooth animations and hover effects
+- Mobile responsive layout
+
+---
+
+## ⚙️ Backend
+
+- Flask REST API
+- SQLite database
+- Secure Flask template routing
+- Product data served as JSON
+- CORS support
+- Modular backend structure
+
+---
+
+## 🛒 Shopping Cart
+
+- Add products
+- Remove products
+- Update quantity
+- Live cart counter
+- Automatic total calculation
+- Cart persistence after browser refresh
+
+---
+
+# 💻 Tech Stack
+
+## Frontend
+
+- HTML5
+- CSS3
+- JavaScript (ES6)
+
+## Backend
+
+- Python
+- Flask
+
+## Database
+
+- SQLite
+
+## Development Tools
+
+- VS Code
+- Git
+- GitHub
+
+---
+
+# 🏗 System Architecture
+
+```
+Browser
+      │
+      ▼
+HTML + CSS + JavaScript
+      │
+      │ fetch()
+      ▼
+Flask REST API
+      │
+      ▼
+SQLite Database
+```
+
+---
+
+## 📁 Project Structure
+
+```text
+luxora-ecommerce/
+│
+├── app.py
+├── luxora.db
+├── setup_db.py
+├── seed_db.py
+│
+├── templates/
+│   ├── index.html
+│   ├── products.html
+│   ├── cart.html
+│   └── login.html
+│
+├── static/
+│   ├── styles.css
+│   ├── script.js
+│   ├── products.js
+│   └── cart.js
+│
+├── screenshots/
+│   ├── home.png
+│   ├── products.png
+│   └── cart.png
+│
+└── README.md
+```
+
+---
+
+# 🚀 Quick Start
+
+## Clone Repository
+
+```bash
+git clone https://github.com/Manmeet2109/luxora-ecommerce.git
+```
+
+Move into the project folder.
+
+```bash
+cd luxora-ecommerce
+```
+
+---
+
+## Install Flask
+
+```bash
+pip install flask flask-cors
+```
+
+---
+
+## Initialize Database
+
+```bash
+python setup_db.py
+```
+
+---
+
+## Insert Sample Products
+
+```bash
+python seed_db.py
+```
+
+---
+
+## Run Application
+
+```bash
+python app.py
+```
+
+Open
+
+```
+http://localhost:5001
+```
+
+---
+
+# 🔌 API Documentation
+
+## Get Products
+
+```
+GET /api/products
+```
+
+### Example Response
+
+```json
+{
+  "electronics": [
+    {
+      "id": 1,
+      "name": "Wireless Headphones",
+      "price": 4999
+    }
+  ],
+  "books": [],
+  "clothing": [],
+  "home": [],
+  "shoes": []
+}
+```
+
+---
+
+# ⚙️ How It Works
+
+1. Flask starts the backend server.
+
+2. Browser loads HTML pages.
+
+3. JavaScript requests product data using:
+
+```javascript
+fetch("/api/products")
+```
+
+4. Flask retrieves product information from SQLite.
+
+5. JSON is returned to the browser.
+
+6. JavaScript dynamically creates product cards.
+
+7. Shopping cart is stored using LocalStorage.
+
+---
+
+# 📷 Screenshots
+
+## Home
+
+<img src="screenshots/home.png">
+
+---
+
+## Products
+
+<img src="screenshots/products.png">
+
+---
+
+## Cart
+
+<img src="screenshots/cart.png">
+
+---
+
+# 📚 Learning Outcomes
+
+Through this project I learned:
+
+- Full-stack application architecture
+- Flask routing
+- REST API development
+- SQLite database integration
+- JavaScript Fetch API
+- DOM manipulation
+- LocalStorage
+- Responsive web design
+- GitHub project management
+
+---
+
+# 🚀 Future Improvements
+
+- User Authentication
+- User Registration
+- Payment Gateway Integration
+- Product Search
+- Wishlist
+- Order History
+- User Dashboard
+- Admin Panel
+- Product Reviews
+- Deployment on Render
+
+---
+
+# 👨‍💻 Author
+
+**Manmeet Singh**
+
+B.Tech Computer Science Engineering
+
+Chandigarh University
+
+GitHub:
+https://github.com/Manmeet2109
+
+---
+
+# 📄 License
+
+This project is intended for learning, portfolio, and educational purposes.
+
+---
+
+<div align="center">
+
+⭐ If you found this project useful, consider giving it a star!
+
+</div>

@@ -1,0 +1,15 @@
+# Database — never commit real data or a local dev DB
+*.db
+*.sqlite3
+
+# Secrets / local environment
+.env
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# OS
+.DS_Store

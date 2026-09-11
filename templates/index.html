@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUXORA - Premium E-Commerce</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="logo" onclick="window.location.href='index.html'">LUXORA</div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="products.html" class="nav-link">Shop</a></li>
+                <li><a href="cart.html" class="nav-link cart-link">
+                    🛒 Cart <span class="cart-count" id="cart-count">0</span>
+                </a></li>
+
+                <!-- LOGIN / LOGOUT -->
+                <li><a href="login.html" class="nav-link" id="login-link">Login</a></li>
+                <li><a href="#" onclick="logout()" class="nav-link" id="logout-link" style="display:none;">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to LUXORA</h1>
+        <p>Discover premium products curated for your lifestyle</p>
+        <a href="products.html" class="cta-button">Start Shopping</a>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 LUXORA - Premium E-Commerce. All rights reserved.</p>
+</footer>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

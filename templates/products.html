@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - LUXORA</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <div class="logo" onclick="window.location.href='index.html'">LUXORA</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="products.html" class="nav-link active">Shop</a></li>
+                    <li><a href="cart.html" class="nav-link cart-link">
+                        🛒 Cart <span class="cart-count" id="cart-count">0</span>
+                    </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- PRODUCTS PAGE -->
+    <div class="products-section">
+
+        <!-- HEADER + FILTER -->
+        <div class="products-header">
+            <div>
+                <h2 id="category-title">All Products</h2>
+
+                <!-- CATEGORY FILTER -->
+                <div class="category-filter">
+                    <button class="filter-btn active" onclick="filterProducts('all')">All</button>
+                    <button class="filter-btn" onclick="filterProducts('shoes')">Shoes</button>
+                    <button class="filter-btn" onclick="filterProducts('electronics')">Electronics</button>
+                    <button class="filter-btn" onclick="filterProducts('clothing')">Clothing</button>
+                    <button class="filter-btn" onclick="filterProducts('books')">Books</button>
+                    <button class="filter-btn" onclick="filterProducts('home')">Home Decor</button>
+                </div>
+
+                <!-- 🔍 SEARCH + SORT (NEW FEATURE) -->
+                <div style="margin-top: 15px;">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="Search products..." 
+                        onkeyup="searchProducts()" 
+                        style="padding:10px; width:60%; margin-right:10px;"
+                    >
+
+                    <button onclick="sortProducts('low')" class="filter-btn">Price: Low → High</button>
+                    <button onclick="sortProducts('high')" class="filter-btn">Price: High → Low</button>
+                </div>
+
+            </div>
+
+            <a href="index.html" class="back-button">← Back Home</a>
+        </div>
+
+        <!-- PRODUCTS GRID -->
+        <div class="products-grid" id="products-container">
+            <!-- Products will be inserted here -->
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2024 LUXORA - Premium E-Commerce. All rights reserved.</p>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="/static/script.js"></script>
+    <script src="/static/products.js"></script>
+
+</body>
+</html>

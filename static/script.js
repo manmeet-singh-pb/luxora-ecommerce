@@ -105,24 +105,31 @@ function updateProductButton(productId) {
 }
 
 // ===== AUTH SYSTEM =====
-function checkUser() {
-    const user = JSON.parse(localStorage.getItem("luxora-user"));
-
+async function checkUser() {
     const loginLink = document.getElementById("login-link");
     const logoutLink = document.getElementById("logout-link");
 
-    if (user) {
-        if(loginLink) loginLink.style.display = "none";
-        if(logoutLink) logoutLink.style.display = "inline-block";
-    } else {
-        if(loginLink) loginLink.style.display = "inline-block";
-        if(logoutLink) logoutLink.style.display = "none";
+    try {
+        const response = await fetch('/api/auth/me');
+        if (response.ok) {
+            if (loginLink) loginLink.style.display = "none";
+            if (logoutLink) logoutLink.style.display = "inline-block";
+        } else {
+            if (loginLink) loginLink.style.display = "inline-block";
+            if (logoutLink) logoutLink.style.display = "none";
+        }
+    } catch (error) {
+        if (loginLink) loginLink.style.display = "inline-block";
+        if (logoutLink) logoutLink.style.display = "none";
     }
 }
 
-function logout() {
-    localStorage.removeItem("luxora-user");
-    alert("Logged out!");
+async function logout() {
+    try {
+        await fetch('/api/auth/logout', { method: 'POST' });
+    } catch (e) {
+        // Continue with redirect even if request fails
+    }
     window.location.href = "index.html";
 }
 

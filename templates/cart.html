@@ -68,11 +68,15 @@
     </footer>
 
     <script>
-        window.addEventListener("DOMContentLoaded", () => {
-            const user = localStorage.getItem("luxora-user");
-
-            if (!user) {
-                alert("Please login first!");
+        window.addEventListener("DOMContentLoaded", async () => {
+            try {
+                const response = await fetch('/api/auth/me');
+                if (!response.ok) {
+                    alert("Please login to view your cart!");
+                    window.location.href = "login.html";
+                }
+            } catch (e) {
+                alert("Please login to view your cart!");
                 window.location.href = "login.html";
             }
         });

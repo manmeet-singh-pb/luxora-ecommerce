@@ -11,35 +11,134 @@
 <header>
     <div class="header-container">
         <div class="logo" onclick="window.location.href='index.html'">LUXORA</div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="products.html" class="nav-link">Shop</a></li>
+                <li><a href="cart.html" class="nav-link cart-link">
+                    🛒 Cart <span class="cart-count" id="cart-count">0</span>
+                </a></li>
+            </ul>
+        </nav>
     </div>
 </header>
 
-<div style="max-width:400px;margin:80px auto;padding:20px;background:white;border-radius:8px;">
-    <h2>Login</h2>
+<div class="auth-container">
+    <!-- LOGIN FORM -->
+    <div id="login-form" class="auth-card">
+        <h2>Welcome Back</h2>
+        <p class="auth-subtitle">Sign in to your LUXORA account</p>
 
-    <input type="text" id="username" placeholder="Enter Username" style="width:100%;padding:10px;margin:10px 0;">
-    <input type="password" id="password" placeholder="Enter Password" style="width:100%;padding:10px;margin:10px 0;">
+        <input type="email" id="login-email" class="auth-input" placeholder="Email address">
+        <input type="password" id="login-password" class="auth-input" placeholder="Password">
 
-    <button onclick="login()" class="cta-button" style="width:100%;">Login</button>
+        <p id="login-error" class="auth-error"></p>
 
-    <p id="error" style="color:red;"></p>
+        <button onclick="handleLogin()" class="cta-button auth-button">Login</button>
+
+        <p class="auth-toggle">Don't have an account? <a href="#" onclick="showRegister(); return false;">Create one</a></p>
+    </div>
+
+    <!-- REGISTER FORM -->
+    <div id="register-form" class="auth-card" style="display:none;">
+        <h2>Create Account</h2>
+        <p class="auth-subtitle">Join LUXORA today</p>
+
+        <input type="text" id="register-name" class="auth-input" placeholder="Full name">
+        <input type="email" id="register-email" class="auth-input" placeholder="Email address">
+        <input type="password" id="register-password" class="auth-input" placeholder="Password (min 8 characters)">
+
+        <p id="register-error" class="auth-error"></p>
+
+        <button onclick="handleRegister()" class="cta-button auth-button">Create Account</button>
+
+        <p class="auth-toggle">Already have an account? <a href="#" onclick="showLogin(); return false;">Sign in</a></p>
+    </div>
 </div>
 
-<script>
-function login() {
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+<footer>
+    <p>&copy; 2024 LUXORA - Premium E-Commerce. All rights reserved.</p>
+</footer>
 
-    if(username === "" || password === "") {
-        document.getElementById("error").textContent = "Fill all fields!";
+<script src="/static/script.js"></script>
+<script>
+function showRegister() {
+    document.getElementById('login-form').style.display = 'none';
+    document.getElementById('register-form').style.display = 'block';
+    document.getElementById('login-error').textContent = '';
+    document.getElementById('register-error').textContent = '';
+}
+
+function showLogin() {
+    document.getElementById('register-form').style.display = 'none';
+    document.getElementById('login-form').style.display = 'block';
+    document.getElementById('login-error').textContent = '';
+    document.getElementById('register-error').textContent = '';
+}
+
+async function handleLogin() {
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+    const errorEl = document.getElementById('login-error');
+
+    errorEl.textContent = '';
+
+    if (!email || !password) {
+        errorEl.textContent = 'Please fill in all fields.';
         return;
     }
 
-    // Fake auth (store user)
-    localStorage.setItem("luxora-user", JSON.stringify({ username }));
+    try {
+        const response = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
 
-    alert("Login successful!");
-    window.location.href = "index.html";
+        const data = await response.json();
+
+        if (response.ok) {
+            showNotification('Login successful!');
+            setTimeout(() => { window.location.href = 'index.html'; }, 500);
+        } else {
+            errorEl.textContent = data.error || 'Login failed.';
+        }
+    } catch (err) {
+        errorEl.textContent = 'Could not connect to server.';
+    }
+}
+
+async function handleRegister() {
+    const name = document.getElementById('register-name').value;
+    const email = document.getElementById('register-email').value;
+    const password = document.getElementById('register-password').value;
+    const errorEl = document.getElementById('register-error');
+
+    errorEl.textContent = '';
+
+    if (!name || !email || !password) {
+        errorEl.textContent = 'Please fill in all fields.';
+        return;
+    }
+
+    try {
+        const response = await fetch('/api/auth/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, password })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            showNotification('Account created successfully!');
+            setTimeout(() => { window.location.href = 'index.html'; }, 500);
+        } else {
+            errorEl.textContent = data.error || 'Registration failed.';
+        }
+    } catch (err) {
+        errorEl.textContent = 'Could not connect to server.';
+    }
 }
 </script>
 

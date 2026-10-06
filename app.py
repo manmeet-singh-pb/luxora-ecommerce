@@ -16,8 +16,10 @@ from flask import Flask
 from flask_cors import CORS
 
 from config import Config
+from db import ensure_tables
 from routes.pages import pages
 from routes.products import products_api
+from routes.auth import auth
 
 
 def create_app():
@@ -30,6 +32,11 @@ def create_app():
 
     app.register_blueprint(pages)
     app.register_blueprint(products_api)
+    app.register_blueprint(auth)
+
+    # Ensure all database tables exist on startup. Safe to call
+    # repeatedly — uses CREATE TABLE IF NOT EXISTS.
+    ensure_tables()
 
     return app
 

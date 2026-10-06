@@ -16,6 +16,17 @@ CREATE TABLE IF NOT EXISTS products (
 )
 ''')
 
+# Users table — added in Phase 2 for authentication
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    email TEXT NOT NULL UNIQUE,
+    password_hash TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+''')
+
 # The initial data to insert
 initial_products = [
     ('shoes', 'Leather Oxford', 8999, 'Classic black leather', '👞'),
